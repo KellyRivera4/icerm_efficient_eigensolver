@@ -1,15 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 # # QR Algorithem
 
 # This code is a draft implementation of a PageRank Algorithm variant using QR Decomposition
 # Implementing Householder and Gram-Schmidt Process
 
 # ## Import Libraries
-
-# In[44]:
-
 
 #Import Python Libraries
 import numpy as npy
@@ -19,9 +13,6 @@ import scipy.linalg as spl  # SciPy Linear Algebra Library
 
 # ## Householder transformation method
 
-# In[45]:
-
-
 # QR Factorization 
 # using numpy command
 def qr_householderN(x):
@@ -29,18 +20,11 @@ def qr_householderN(x):
     return Q, R 
 
 
-# In[46]:
-
-
 # QR Factorization 
 # using scipy command
 def qr_householderS(x):
     Q, R = spl.qr(x)
     return Q, R
-
-
-# In[47]:
-
 
 # RQ Decomposition of a matrix
 # Calculate decomposition of a = qr where q is unitary/orthogonal and r upper triangular.
@@ -50,9 +34,6 @@ def rq_householder(x):
 
 
 # ## Gram-Schmidt Process
-
-# In[48]:
-
 
 # QR Factorization using the Gram-Schmidt precess
 def qr_GS(x):
@@ -72,42 +53,3 @@ def qr_GS(x):
         Q[:, j] = v / vNorm
         R[j, j] = vNorm
     return Q, R
-
-
-# ## Testing the functions
-
-# In[49]:
-
-
-# testing qr factorization Gram-schmidt function
-A = npy.array([[12, -51, 4], [6, 167, -68], [-4, 24, -41]])
-x, y  = qr_GS(A)
-print(x,"\n", y )
-
-
-# In[50]:
-
-
-# testing qr factorization Householder function (using numpy.linalg)
-A = npy.array([[12, -51, 4], [6, 167, -68], [-4, 24, -41]])
-x, y  = qr_householderN2(A)
-print(x,"\n", y )
-
-
-# In[51]:
-
-
-# testing qr factorization Householder function (using scipy.linalg command)
-A = npy.array([[12, -51, 4], [6, 167, -68], [-4, 24, -41]])
-x, y  = qr_householderS(A)
-print(x,"\n", y)
-
-
-# In[52]:
-
-
-# testing rq decomposition Householder function 
-A = npy.array([[12, -51, 4], [6, 167, -68], [-4, 24, -41]])
-x, y = rq_householder(A)
-print(x,"\n", y)
-
